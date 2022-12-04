@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';
+import bcrypt from 'bcrypt';
 
 const SignUpPage = () => {
   // Initialize the state
@@ -26,7 +27,10 @@ const SignUpPage = () => {
       return;
     }
 
-    // Save the username and password
+    // Hash the password
+    const hash = bcrypt.hashSync(password, 10);
+
+    // Save the username and hashed password
 
     // Show the success message in the modal
     setShowModal(true);
